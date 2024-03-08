@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:logging/logging.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -11,17 +11,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'My-First Flutter-App',
       theme: ThemeData(
         colorScheme:
             ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 1, 1, 2)),
         useMaterial3: true,
-      ),
+      ), 
       home: const MyHomePage(title: '100 Days of Code'),
     );
   }
 }
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -31,10 +30,20 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+var logger = Logger('MyLogger');
 //function for asking did you miss a day?
+void missedDay () {
+
+}
+
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  void _presentOrAbsent() {
+    setState(() {
+      String "Present or Absent?";
+    });
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -44,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      missedDay();
     });
   }
 
