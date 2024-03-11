@@ -39,10 +39,13 @@
 
 
   class _MyHomePageState extends State<MyHomePage> {
-    String message = "Missed a day?";
-    bool yes = true;
-    bool no = false;
     int _counter = 0;
+
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
+    });
+  }
   void _showDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -53,8 +56,9 @@
           actions: [
             TextButton(
               onPressed: () {
-                decrementCounter();
+                _resetCounter();
                 Navigator.of(context).pop(); // Close the dialog
+                _showMissedDayDialog(context);
               },
               child: const Text('Yes'),
             ),
@@ -69,6 +73,49 @@
       },
     );
   }
+    void _showMissedDayDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title:const  Text('Awwww man, Streak Lost.'),
+          content: const Text('You missed a day! revert to 0'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('ok'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+    void cantDecrement() {
+      if (_counter <= 0) {
+          setState(() {
+            _counter = 0;
+            showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title:const  Text("Rocky, There is no tomorrow!"),
+            content: const Text('no day to decerement...'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // Close the dialog
+                },
+              child: const Text('ok'),
+            ),
+          ],
+        );
+      },
+    );
+        });
+      }
+    }
 
     void decrementCounter() {
       setState(() {
@@ -132,15 +179,13 @@
             ],
           ),
         ),
-//         floatingActionButton: FloatingActionButton(
-        //   onPressed: incrementCounter,
-        //   tooltip: 'Increment',
-        //   child: const Icon(Icons.add),
-        // )
         floatingActionButton: Row(mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FloatingActionButton(
-            onPressed: decrementCounter,
+            onPressed: () {
+              decrementCounter();
+              cantDecrement();
+            },
             child: const Icon(Icons.remove)),
           FloatingActionButton(
             onPressed: () {
