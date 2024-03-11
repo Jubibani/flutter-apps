@@ -11,6 +11,7 @@
     @override
     Widget build(BuildContext context) {
       return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'My-First Flutter-App',
         theme: ThemeData(
           colorScheme:
@@ -38,12 +39,37 @@
 
 
   class _MyHomePageState extends State<MyHomePage> {
+    String message = "Missed a day?";
+    bool yes = true;
+    bool no = false;
     int _counter = 0;
-    // void __presentOrAbsent() {
-    //   setState(() {
-    //     showDialog(context: context, builder: builder);
-    //   });
-    // }
+  void _showDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title:const  Text('Be Honest...'),
+          content: const Text('Did you miss a Day?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                decrementCounter();
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Yes'),
+            ),
+            TextButton(onPressed: () {
+              incrementCounter();
+              Navigator.of(context).pop();
+            }, 
+            child: const Text('No')
+            )
+          ],
+        );
+      },
+    );
+  }
+
     void decrementCounter() {
       setState(() {
         _counter--;
@@ -57,10 +83,8 @@
         // _counter without calling setState(), then the build method would not be
         // called again, and so nothing would appear to happen.
         _counter++;
-        missedDay();
       });
     }
-
     @override
     Widget build(BuildContext context) {
       // This method is rerun every time setState is called, for instance as done
@@ -99,7 +123,7 @@
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const Text(
-                'your completed days out of 100 days of code is ',
+                'your streak:  ',
               ),
               Text(
                 '$_counter',
@@ -116,11 +140,13 @@
         floatingActionButton: Row(mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FloatingActionButton(
-            onPressed: incrementCounter,
-            child: const Icon(Icons.add)),
-          FloatingActionButton(
             onPressed: decrementCounter,
             child: const Icon(Icons.remove)),
+          FloatingActionButton(
+            onPressed: () {
+              _showDialog(context);
+            },
+            child: const Icon(Icons.add)),
         ])   , // This trailing comma makes auto-formatting nicer for build methods.
       );
     }
