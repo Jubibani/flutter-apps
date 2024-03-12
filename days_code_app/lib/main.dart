@@ -13,9 +13,18 @@
         debugShowCheckedModeBanner: false,
         title: 'My-First Flutter-App',
         theme: ThemeData(
-          colorScheme:
-              ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 1, 1, 2)),
-          useMaterial3: true,
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            background: const Color(0xFF1F2428),            // Add other color scheme properties as needed
+          ),
+          textTheme: const TextTheme(
+            bodyLarge:  TextStyle(color: Colors.white),
+            bodyMedium: TextStyle(color: Colors.white),
+            bodySmall: TextStyle(color: Colors.white),
+          ),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color(0xFF1F2428),
+            titleTextStyle: TextStyle(color: Colors.white, fontSize: 20)
+            ),// Other theme properties
         ), 
         home: const MyHomePage(title: '100 Days of Code'),
       );
@@ -133,7 +142,7 @@
       // than having to individually change instances of widgets.
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          backgroundColor: const Color(0xFF1F2428),
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
