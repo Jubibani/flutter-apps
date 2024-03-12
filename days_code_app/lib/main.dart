@@ -1,5 +1,4 @@
   import 'package:flutter/material.dart';
-  import 'package:logging/logging.dart';
   void main() {
     runApp(const MyApp());
   }
@@ -30,8 +29,6 @@
     @override
     State<MyHomePage> createState() => _MyHomePageState();
   }
-
-  var logger = Logger('MyLogger');
   //function for asking did you miss a day?
   void missedDay () {
 
