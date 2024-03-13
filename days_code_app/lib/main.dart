@@ -47,6 +47,7 @@
   class _MyHomePageState extends State<MyHomePage> {
     int _counter = 0;
 
+
   void _resetCounter() {
     setState(() {
       _counter = 0;
@@ -134,12 +135,6 @@
     }
     @override
     Widget build(BuildContext context) {
-      // This method is rerun every time setState is called, for instance as done
-      // by the _incrementCounter method above.
-      //
-      // The Flutter framework has been optimized to make rerunning build methods
-      // fast, so that you can just rebuild anything that needs updating rather
-      // than having to individually change instances of widgets.
       return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFF1F2428),
@@ -151,13 +146,39 @@
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text(
-                'your streak:  ',
+              Container( //Parent Container for the little boxes (days)
+                width: 200,
+                height: 200,
+               decoration: BoxDecoration(
+                color: Color.fromARGB(255, 32, 35, 38),
+                border: Border.all(
+                  color: Colors.black,
+                  width: 2.5,
+                ),
+                borderRadius: BorderRadius.circular(18.0),
+               ),
+                child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            width: 15,
+                            height:15,
+                            padding: const EdgeInsets.all(10),
+                            color: const Color.fromARGB(255, 12, 103, 48),
+                          ),
+                        ],
+                      ),
+                    ]
+                  ),
               ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
+              // const Text(
+              //   'your streak:  ',
+              // ),
+              // Text(
+              //   '$_counter',
+              //   style: Theme.of(context).textTheme.headlineMedium,
+              // ),
             ],
           ),
         ),
