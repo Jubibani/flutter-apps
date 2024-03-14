@@ -149,28 +149,28 @@
               Container( //Parent Container for the little boxes (days)
                 width: 200,
                 height: 200,
-               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 32, 35, 38),
+                decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 32, 35, 38),
                 border: Border.all(
                   color: Colors.black,
                   width: 2.5,
                 ),
                 borderRadius: BorderRadius.circular(18.0),
                ),
-                child: Column(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Container(
-                            width: 15,
-                            height:15,
-                            padding: const EdgeInsets.all(10),
-                            color: const Color.fromARGB(255, 12, 103, 48),
-                          ),
-                        ],
+                child: Center(
+                  child: Container(
+                    width: 193,
+                    height:193,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 12, 103, 48),
+                      border: Border.all(
+                        color: Colors.black,
+                        width:  2.5,
                       ),
-                    ]
+                      borderRadius: BorderRadius.circular(19.0),
+                    ),
                   ),
+                ),  
               ),
               // const Text(
               //   'your streak:  ',
