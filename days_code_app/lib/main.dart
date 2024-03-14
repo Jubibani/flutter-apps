@@ -67,6 +67,7 @@
                 child: const Text('Yes'),
               ),
               TextButton(onPressed: () {
+                _incrementCounter();
                 _makeGreenBoxAppear();
                 Navigator.of(context).pop();
               }, 
@@ -121,12 +122,12 @@
         });
       }
     }
-    void decrementCounter() {
+    void _decrementCounter() {
       setState(() {
         _counter--;
       });
     }
-    void incrementCounter() {
+    void _incrementCounter() {
       setState(() {
         _counter++;
       });
@@ -146,61 +147,119 @@
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xFF1F2428),
+          backgroundColor: const Color.fromARGB(255, 56, 106, 153),
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container( //Parent Container for the little boxes (days)
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 32, 35, 38),
-                border: Border.all(
-                  color: Colors.black,
-                  width: 2.5,
-                ),
-                borderRadius: BorderRadius.circular(18.0),
-               ),
-               child: Visibility(
-                visible: childGreenBoxVisbility,
-                child: Center(
-                  child: Container(
-                    width: 193,
-                    height:193,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 12, 103, 48),
-                      border: Border.all(
-                        color: Colors.black,
-                        width:  2.5,
-                      ),
-                      borderRadius: BorderRadius.circular(19.0),
+        body:Scaffold(
+          body: SafeArea(
+            child: Center(
+                child: Column(
+              children: <Widget>[
+                Container(
+                  // Status Container
+                  width: 350,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 31, 32, 32),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 2.5,
                     ),
+                    borderRadius: BorderRadius.circular(18.0),
                   ),
-                ), 
-               )
-              ),
-            ],
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  margin: const EdgeInsets.all(20),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child:  Container( //WinStreak Container
+                          width: 150,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 34, 132, 76),
+                            border: Border.all(
+                            color: Colors.black,
+                            width: 2.5,
+                          ),
+                          borderRadius: BorderRadius.circular(18.0),
+                          ),
+                          child: Center(
+                             child: Text(
+                              _counter.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 30,
+                              )
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child:  Container( //WinStreak Container
+                          width: 150,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 134, 25, 25),
+                            border: Border.all(
+                            color: Colors.black,
+                            width: 2.5,
+                          ),
+                          borderRadius: BorderRadius.circular(18.0),
+                          ),
+                        ),
+                      ),     
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20), // Spacing between containers
+                Container(
+                  // Root Container for ParentContainer(ChildContainer())
+                  width: 350,
+                  height: 300,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 31, 32, 32),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 2.5,
+                    ),
+                    borderRadius: BorderRadius.circular(18.0),
+                  ),
+                ),
+              ],
+            ),
+            ),
           ),
         ),
-        floatingActionButton: Row(mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          FloatingActionButton(
-            onPressed: () {
-              decrementCounter();
-              cantDecrement();
-            },
-            child: const Icon(Icons.remove)),
-          FloatingActionButton(
-            onPressed: () {
-              _showDialog(context);
-            },
-            child: const Icon(Icons.add)),
-        ])   , // This trailing comma makes auto-formatting nicer for build methods.
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end, 
+            children: <Widget>[
+              FloatingActionButton(
+                onPressed: () {
+                  _showMissedDayDialog(context);
+                  _decrementCounter();
+                  _makeGreenBoxDisappear();
+                },
+                child: const Icon(Icons.remove),
+              ),
+              const SizedBox(width: 10),
+              FloatingActionButton(
+                onPressed: () {
+                  _showDialog(context);
+                  _makeGreenBoxAppear();
+                },              
+                child: const Icon(Icons.add),
+              ),
+            ],
+          )
+        ),
+      // This trailing comma makes auto-formatting nicer for build methods.
       );
     }
   }
