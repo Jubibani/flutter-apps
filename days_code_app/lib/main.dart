@@ -38,48 +38,45 @@
     @override
     State<MyHomePage> createState() => _MyHomePageState();
   }
-  //function for asking did you miss a day?
-  void missedDay () {
-
-  }
-
 
   class _MyHomePageState extends State<MyHomePage> {
+    var childGreenBoxVisbility = false;
     int _counter = 0;
 
 
-  void _resetCounter() {
-    setState(() {
-      _counter = 0;
-    });
-  }
-  void _showDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title:const  Text('Be Honest...'),
-          content: const Text('Did you miss a Day?'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                _resetCounter();
-                Navigator.of(context).pop(); // Close the dialog
-                _showMissedDayDialog(context);
-              },
-              child: const Text('Yes'),
-            ),
-            TextButton(onPressed: () {
-              incrementCounter();
-              Navigator.of(context).pop();
-            }, 
-            child: const Text('No')
-            )
-          ],
-        );
-      },
-    );
-  }
+    void _resetCounter() {
+      setState(() {
+        _counter = 0;
+      });
+    }
+    void _showDialog(BuildContext context) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title:const  Text('Be Honest...'),
+            content: const Text('Did you miss a Day?'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  _resetCounter();
+                  _makeGreenBoxDisappear();
+                  Navigator.of(context).pop(); // Close the dialog
+                  _showMissedDayDialog(context);
+                },
+                child: const Text('Yes'),
+              ),
+              TextButton(onPressed: () {
+                _makeGreenBoxAppear();
+                Navigator.of(context).pop();
+              }, 
+              child: const Text('No')
+              )
+            ],
+          );
+        },
+      );
+    }
     void _showMissedDayDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -112,6 +109,7 @@
             actions: [
               TextButton(
                 onPressed: () {
+                  _makeGreenBoxDisappear();
                   Navigator.of(context).pop(); // Close the dialog
                 },
               child: const Text('ok'),
@@ -131,6 +129,17 @@
     void incrementCounter() {
       setState(() {
         _counter++;
+      });
+    }
+
+    void _makeGreenBoxAppear() {
+      setState((){
+        childGreenBoxVisbility = true;
+      });
+    }
+    void _makeGreenBoxDisappear() {
+      setState((){
+        childGreenBoxVisbility = false;
       });
     }
     @override
@@ -157,6 +166,8 @@
                 ),
                 borderRadius: BorderRadius.circular(18.0),
                ),
+               child: Visibility(
+                visible: childGreenBoxVisbility,
                 child: Center(
                   child: Container(
                     width: 193,
@@ -170,15 +181,9 @@
                       borderRadius: BorderRadius.circular(19.0),
                     ),
                   ),
-                ),  
+                ), 
+               )
               ),
-              // const Text(
-              //   'your streak:  ',
-              // ),
-              // Text(
-              //   '$_counter',
-              //   style: Theme.of(context).textTheme.headlineMedium,
-              // ),
             ],
           ),
         ),
