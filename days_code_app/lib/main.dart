@@ -1,4 +1,8 @@
   import 'package:flutter/material.dart';
+  // class customContainer extends StatelessWidget {
+
+  // }
+
   void main() {
     runApp(const MyApp());
   }
@@ -29,6 +33,21 @@
         home: const MyHomePage(title: '100 Days of Code'),
       );
     }
+  }
+  //function for container
+  Widget buildContainer({Color color}) {
+    return Container(
+      width: 20,
+      height: 20,
+      decoration: BoxDecoration(
+        color: color?? const Color(0xFF1F2428),
+        border: Border.all(
+          color: Colors.black,
+          width: 2.5,
+        ),
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+    );
   }
   class MyHomePage extends StatefulWidget {
     const MyHomePage({super.key, required this.title});
@@ -97,34 +116,30 @@
       },
     );
   }
-    void cantDecrement() {
-      if (_counter <= 0) {
-          setState(() {
-            _counter = 0;
-            showDialog(
+    void _decrementCounter() {
+      setState(() {
+        if (_counter >= 1) {
+          _counter--; 
+        } else if (_counter <=0) {
+          showDialog(
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
                 title:const  Text("Rocky, There is no tomorrow!"),
-            content: const Text('no day to decerement...'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  _makeGreenBoxDisappear();
-                  Navigator.of(context).pop(); // Close the dialog
-                },
-              child: const Text('ok'),
-            ),
-          ],
-        );
-      },
-    );
-        });
-      }
-    }
-    void _decrementCounter() {
-      setState(() {
-        _counter--;
+                content: const Text('no day to decerement...'),
+                actions: [
+                TextButton(
+                  onPressed: () {
+                    _makeGreenBoxDisappear();
+                    Navigator.of(context).pop(); // Close the dialog
+                  },
+                  child: const Text('ok'),
+                ),
+                ],
+              );
+            },
+          );
+        }
       });
     }
     void _incrementCounter() {
@@ -217,8 +232,7 @@
                   ),
                 ),
                 const SizedBox(height: 20), // Spacing between containers
-                Container(
-                  // Root Container for ParentContainer(ChildContainer())
+                Container( // Root Container for ParentContainer(ChildContainer())
                   width: 350,
                   height: 300,
                   decoration: BoxDecoration(
@@ -229,6 +243,246 @@
                     ),
                     borderRadius: BorderRadius.circular(18.0),
                   ),
+                 child: ListView(
+                  children: <Widget> [
+                     Row(
+                      children: <Widget>[
+                       Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Container( //greenContainer
+                            width: 21,
+                            height: 21,
+                            margin: const EdgeInsets.all(0.0),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF1F2428),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                          color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                          color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ), 
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Container( //greenContainer
+                            width: 21,
+                            height: 21,
+                            margin: const EdgeInsets.all(0.0),
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 31, 32, 32),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                          color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                          color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),                     
+                      ],
+                    ),
+                     Row(
+                      children: <Widget>[
+                                                Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Container( //greenContainer
+                            width: 21,
+                            height: 21,
+                            margin: const EdgeInsets.all(0.0),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF1F2428),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                          color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                          color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ), 
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Container( //greenContainer
+                            width: 21,
+                            height: 21,
+                            margin: const EdgeInsets.all(0.0),
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 34, 132, 76),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                          color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                          color: const Color(0xFF1F2428),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),                     
+                      ],
+                    ),
+                  ],
+                 ),
                 ),
               ],
             ),
