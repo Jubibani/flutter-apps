@@ -1,7 +1,41 @@
   import 'package:flutter/material.dart';
-  // class customContainer extends StatelessWidget {
+// Define a custom container widget
+  class CustomContainer extends StatelessWidget {
+    final double width;
+    final double height;
+    final Color color;
+    final Color borderColor;
+    final double borderWidth;
+    final double borderRadius;
 
-  // }
+    // Constructor for the CustomContainer class
+    const CustomContainer({
+      Key key,
+      this.width = 20,
+      this.height = 20,
+      this.color = const Color(0xFF1F2428),
+      this.borderColor = Colors.black,
+      this.borderWidth = 2.5,
+      this.borderRadius = 5.0,
+    }) : super(key: key);
+
+    @override
+    Widget build(BuildContext context) {
+      return Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: color,
+          border: Border.all(
+            color: borderColor,
+            width: borderWidth,
+          ),
+          borderRadius: BorderRadius.circular(borderRadius),
+        ),
+      );
+    }
+  }
+
 
   void main() {
     runApp(const MyApp());
@@ -35,20 +69,7 @@
     }
   }
   //function for container
-  Widget buildContainer({Color color}) {
-    return Container(
-      width: 20,
-      height: 20,
-      decoration: BoxDecoration(
-        color: color?? const Color(0xFF1F2428),
-        border: Border.all(
-          color: Colors.black,
-          width: 2.5,
-        ),
-        borderRadius: BorderRadius.circular(5.0),
-      ),
-    );
-  }
+
   class MyHomePage extends StatefulWidget {
     const MyHomePage({super.key, required this.title});
 
@@ -247,238 +268,11 @@
                   children: <Widget> [
                      Row(
                       children: <Widget>[
-                       Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Container( //greenContainer
-                            width: 21,
-                            height: 21,
-                            margin: const EdgeInsets.all(0.0),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF1F2428),
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                          color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                          color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
+                        // Instantiate 100 instances of CustomContainer
+                        ...List.generate(
+                          100,
+                          (index) => CustomContainer(),
                         ), 
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Container( //greenContainer
-                            width: 21,
-                            height: 21,
-                            margin: const EdgeInsets.all(0.0),
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 31, 32, 32),
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                          color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                          color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),                     
-                      ],
-                    ),
-                     Row(
-                      children: <Widget>[
-                                                Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Container( //greenContainer
-                            width: 21,
-                            height: 21,
-                            margin: const EdgeInsets.all(0.0),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF1F2428),
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                          color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                          color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ), 
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Container( //greenContainer
-                            width: 21,
-                            height: 21,
-                            margin: const EdgeInsets.all(0.0),
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 34, 132, 76),
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                          color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          decoration: BoxDecoration(
-                          color: const Color(0xFF1F2428),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),                     
                       ],
                     ),
                   ],
