@@ -1,40 +1,5 @@
   import 'package:flutter/material.dart';
 // Define a custom container widget
-  class CustomContainer extends StatelessWidget {
-    final double width;
-    final double height;
-    final Color color;
-    final Color borderColor;
-    final double borderWidth;
-    final double borderRadius;
-
-    // Constructor for the CustomContainer class
-    const CustomContainer({
-      Key key,
-      this.width = 20,
-      this.height = 20,
-      this.color = const Color(0xFF1F2428),
-      this.borderColor = Colors.black,
-      this.borderWidth = 2.5,
-      this.borderRadius = 5.0,
-    }) : super(key: key);
-
-    @override
-    Widget build(BuildContext context) {
-      return Container(
-        width: width,
-        height: height,
-        decoration: BoxDecoration(
-          color: color,
-          border: Border.all(
-            color: borderColor,
-            width: borderWidth,
-          ),
-          borderRadius: BorderRadius.circular(borderRadius),
-        ),
-      );
-    }
-  }
 
 
   void main() {
@@ -69,7 +34,32 @@
     }
   }
   //function for container
+  class ParentContainer extends StatefulWidget {
+    final double width; 
+    final double height;
+    final Color color;
+    
+    const CustomContainer({ //constructor
+      Key key,
+      this.width = 100,
+      this.height = 100,
+      this.color = Colors.green,
+    }) :super(key: key);
 
+    Widget build(BuildContext context){
+      return Container(
+        width: width,
+        height: height,
+        color: color,
+      );
+    }
+  }
+
+  CustomContainer mycontainer = Container(
+    width: 100,
+    height: 100,
+    color: Colors.green,
+  );
   class MyHomePage extends StatefulWidget {
     const MyHomePage({super.key, required this.title});
 
@@ -268,11 +258,7 @@
                   children: <Widget> [
                      Row(
                       children: <Widget>[
-                        // Instantiate 100 instances of CustomContainer
-                        ...List.generate(
-                          100,
-                          (index) => CustomContainer(),
-                        ), 
+                        
                       ],
                     ),
                   ],
